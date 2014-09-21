@@ -1,0 +1,30 @@
+.shortener .control {
+    input {
+        display: inline-block;
+        width: ~"calc(100% - 234px)";
+        height: @shortener-height - (@shortener-padding * 2);
+        margin: 0 20px 0 0;
+        padding: 0 20px;
+        vertical-align: top;
+
+        font-family: 'Oswald', sans-serif;
+        font-size: 30px;
+        line-height: @shortener-height - (@shortener-padding * 2) - 8px;
+        
+        outline: none;
+        border-radius: 8px;
+        border: 4px dotted @border-color-2;
+
+        &:focus {
+            border: 4px dotted @border-color-4;
+        }
+    }
+
+    .button {
+        .button(#FF6347, #C22400);
+
+        width: 210px;
+        height: @shortener-height - (@shortener-padding * 2);
+        line-height: @shortener-height - (@shortener-padding * 2);
+    }
+}

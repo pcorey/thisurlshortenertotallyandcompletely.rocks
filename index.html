@@ -2,19 +2,28 @@
 layout: default
 ---
 
-<div class="home">
+<header class="header">
+    <!-- <p>This URL Shortener Totally and Completely</p>
+    <h1>Rocks!</h1> -->
+    <svg class="hero" viewbox="0 0 150 60">
+        <text x="3" y="11">This URL Shortener Totally and Completely</text>
+        <text x="2" y="55">Rocks!</text>
+    </svg>
+</header>
 
-  <h1>Posts</h1>
+<section class="shortener">
 
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
+    <div id="box" class="show-front">
+        <figure class="front control">
+            <input>
+            <a id="shorten" class="button" href="#">Shorten!</a>
+        </figure>
+        <figure class="back result success">
+            <a href="#">thisurlshortenertotallyandcompletely.rocks/001</a>
+            <a id="again" class="button" href="#">Again!</a>
+        </figure>
+        <figure class="right"></figure>
+        <figure class="left"></figure>
+    </div>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+</section>

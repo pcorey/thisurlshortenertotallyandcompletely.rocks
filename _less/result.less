@@ -1,0 +1,40 @@
+.shortener .result {
+    .button {
+        .button(#FF6347, #C22400);
+        width: 210px;
+        height: @shortener-height - (@shortener-padding * 2);
+        line-height: @shortener-height - (@shortener-padding * 2);
+    }
+
+    a:first-of-type {
+        display: inline-block;
+        width: ~"calc(100% - 234px)";
+        height: @shortener-height - (@shortener-padding * 2);
+        margin: 0 20px 0 0;
+        padding: 0 20px;
+        vertical-align: top;
+
+        font-family: 'Oswald', sans-serif;
+        font-size: 30px;
+        line-height: @shortener-height - (@shortener-padding * 2) - 8px;
+
+        border-radius: 8px;
+
+        text-decoration: none;
+        text-align: center;
+    }
+
+    &.success {
+        a:first-of-type {
+            border: 4px dotted @border-color-3;
+            color: @text-color-1;
+        }
+    }
+
+    &.error {
+        a:first-of-type {
+            border: 4px dotted @border-color-5;
+            color: @border-color-5;
+        }
+    }
+}
