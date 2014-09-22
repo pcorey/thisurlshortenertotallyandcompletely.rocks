@@ -1,9 +1,18 @@
 .shortener .result {
+
+    @media (max-width: 880px) {
+        line-height: 100px !important;
+    }
+
     .button {
         .button(#FF6347, #C22400);
         width: 210px;
         height: @shortener-height - (@shortener-padding * 2);
         line-height: @shortener-height - (@shortener-padding * 2);
+
+        @media (max-width: 880px) {
+            width: 100%;
+        }
     }
 
     a:first-of-type {
@@ -22,6 +31,30 @@
 
         text-decoration: none;
         text-align: center;
+
+        @media (max-width: 880px) {
+            width: 100%;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 24px;
+        }
+
+        @media (max-width: 540px) {
+            font-size: 20px;
+        }
+
+        @media (max-width: 470px) {
+            font-size: 18px;
+        }
+
+        @media (max-width: 430px) {
+            font-size: 14px;
+        }
+
+        @media (max-width: 355px) {
+            font-size: 12px;
+        }
     }
 
     &.success {

@@ -1,4 +1,9 @@
 .shortener .control {
+
+    @media (max-width: 880px) {
+        line-height: 100px !important;
+    }
+
     input {
         display: inline-block;
         width: ~"calc(100% - 234px)";
@@ -15,8 +20,24 @@
         border-radius: 8px;
         border: 4px dotted @border-color-2;
 
+        @media (max-width: 880px) {
+            width: 100%;
+        }
+
         &:focus {
             border: 4px dotted @border-color-4;
+        }
+
+        @media (max-width: 640px) {
+            font-size: 24px;
+        }
+
+        @media (max-width: 540px) {
+            font-size: 20px;
+        }
+
+        @media (max-width: 470px) {
+            font-size: 18px;
         }
     }
 
@@ -26,5 +47,9 @@
         width: 210px;
         height: @shortener-height - (@shortener-padding * 2);
         line-height: @shortener-height - (@shortener-padding * 2);
+
+        @media (max-width: 880px) {
+            width: 100%;
+        }
     }
 }

@@ -1,6 +1,9 @@
 .shortener {
     height: @shortener-height - (@shortener-padding * 2);
-    width: 800px;
+    width: 840px;
+    @media (max-width: 880px) {
+        width: 90%;
+    }
 
     position: relative;
     margin: 0 auto 40px;
@@ -10,7 +13,16 @@
     perspective: 1200px;
 
     #box {
-        .prism(@shortener-width - (@shortener-padding * 2), @shortener-height - (@shortener-padding * 2), 50px, @shortener-padding);
+        .prism(800px,
+               @shortener-height - (@shortener-padding * 2),
+               50px,
+               @shortener-padding);
+        @media (max-width: 880px) {
+            .prism(@shortener-width - (@shortener-padding * 2),
+                   (@shortener-height - (@shortener-padding * 2)) * 2 + (@shortener-padding),
+                   50px,
+                   @shortener-padding);
+        }
         .left div, .right div {
             background-image: url('http://subtlepatterns.com/patterns/dimension.png');
         }
