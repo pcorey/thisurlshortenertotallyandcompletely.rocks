@@ -3,9 +3,10 @@
     @total-height: @height + (@padding * 2);
     @total-depth: @depth + (@padding * 2);
 
-    width: 100%;
+    width: @total-width;
     height: 100%;
-    position: absolute;
+    margin: 0 auto;
+    position: relative;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     -o-transform-style: preserve-3d;
@@ -34,65 +35,62 @@
 
     & > .front,
     & > .back {
-        width: @total-width;
+        width: 100%;
         height: @total-height;
     }
 
     & > .right,
     & > .left {
-        width: @total-depth;
+        width: 100%;
         height: @total-height;
-        left: (@total-width - @total-depth) / 2;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        div {
+            position: relative;
+            padding: @padding;
+            height: @total-height;
+            width: @total-depth;
+            border: 1px solid @border-color-1;
+            left: ~"calc(50% - " (@total-depth / 2) ~")";
+        }
     }
 
     & > .front  {
         -webkit-transform: translateZ( @total-depth / 2 );
-        -moz-transform: translateZ( @total-depth / 2 );
-        -o-transform: translateZ( @total-depth / 2 );
-        transform: translateZ( @total-depth / 2 );
+        -moz-transform:    translateZ( @total-depth / 2 );
+        -o-transform:      translateZ( @total-depth / 2 );
+        transform:         translateZ( @total-depth / 2 );
     }
     & > .back   {
         -webkit-transform: rotateY( 180deg ) translateZ(  @total-depth / 2 );
-        -moz-transform: rotateY( 180deg ) translateZ(  @total-depth / 2 );
-        -o-transform: rotateY( 180deg ) translateZ(  @total-depth / 2 );
-        transform: rotateY( 180deg ) translateZ(  @total-depth / 2 );
+        -moz-transform:    rotateY( 180deg ) translateZ(  @total-depth / 2 );
+        -o-transform:      rotateY( 180deg ) translateZ(  @total-depth / 2 );
+        transform:         rotateY( 180deg ) translateZ(  @total-depth / 2 );
     }
     & > .right {
-        -webkit-transform: rotateY(   90deg ) translateZ( @total-width / 2 );
-        -moz-transform: rotateY(   90deg ) translateZ( @total-width / 2 );
-        -o-transform: rotateY(   90deg ) translateZ( @total-width / 2 );
-        transform: rotateY(   90deg ) translateZ( @total-width / 2 );
+        -webkit-transform: translateX( 50% ) rotateY(   90deg );
+        -moz-transform:    translateX( 50% ) rotateY(   90deg );
+        -o-transform:      translateX( 50% ) rotateY(   90deg );
+        transform:         translateX( 50% ) rotateY(   90deg );
     }
     & > .left {
-        -webkit-transform: rotateY(  -90deg ) translateZ( @total-width / 2 );
-        -moz-transform: rotateY(  -90deg ) translateZ( @total-width / 2 );
-        -o-transform: rotateY(  -90deg ) translateZ( @total-width / 2 );
-        transform: rotateY(  -90deg ) translateZ( @total-width / 2 );
+        -webkit-transform: translateX( -50% ) rotateY(  -90deg );
+        -moz-transform:    translateX( -50% ) rotateY(  -90deg );
+        -o-transform:      translateX( -50% ) rotateY(  -90deg );
+        transform:         translateX( -50% ) rotateY(  -90deg );
     }
-
 
     &.show-front {
         -webkit-transform: translateZ(  -@total-depth / 2 );
-        -moz-transform: translateZ(  -@total-depth / 2 );
-        -o-transform: translateZ(  -@total-depth / 2 );
-        transform: translateZ(  -@total-depth / 2 );
+        -moz-transform:    translateZ(  -@total-depth / 2 );
+        -o-transform:      translateZ(  -@total-depth / 2 );
+        transform:         translateZ(  -@total-depth / 2 );
     }
     &.show-back {
         -webkit-transform: translateZ( -@total-depth / 2 ) rotateY( 180deg );
-        -moz-transform: translateZ( -@total-depth / 2 ) rotateY( 180deg );
-        -o-transform: translateZ( -@total-depth / 2 ) rotateY( 180deg );
-        transform: translateZ( -@total-depth / 2 ) rotateY( 180deg );
-    }
-    &.show-right {
-        -webkit-transform: translateZ( -@total-width / 2 ) rotateY(  -90deg );
-        -moz-transform: translateZ( -@total-width / 2 ) rotateY(  -90deg );
-        -o-transform: translateZ( -@total-width / 2 ) rotateY(  -90deg );
-        transform: translateZ( -@total-width / 2 ) rotateY(  -90deg );
-    }
-    &.show-left {
-        -webkit-transform: translateZ( -@total-width / 2 ) rotateY(   90deg );
-        -moz-transform: translateZ( -@total-width / 2 ) rotateY(   90deg );
-        -o-transform: translateZ( -@total-width / 2 ) rotateY(   90deg );
-        transform: translateZ( -@total-width / 2 ) rotateY(   90deg );
+        -moz-transform:    translateZ( -@total-depth / 2 ) rotateY( 180deg );
+        -o-transform:      translateZ( -@total-depth / 2 ) rotateY( 180deg );
+        transform:         translateZ( -@total-depth / 2 ) rotateY( 180deg );
     }
 }
