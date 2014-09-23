@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lobster|Oswald:300);
+@import url(https://fonts.googleapis.com/css?family=Lobster|Oswald:300);
 html {
   box-sizing: border-box;
 }
@@ -384,6 +384,11 @@ html {
   border: 4px dotted #c22400;
   color: #c22400;
 }
+/*
+ * Mixin adapted from Rectangular Prism example at:
+ * http://desandro.github.io/3dtransforms/docs/rectangular-prism.html
+ * Thank you David DeSandro!
+ */
 .hero {
   fill: #333333;
   max-height: 100%;
