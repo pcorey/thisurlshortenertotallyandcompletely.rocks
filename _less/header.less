@@ -1,13 +1,14 @@
 .header {
     width: 60%;
+    height: ~"calc(50% - " @shortener-height/2 ~")";
     max-width: 500px;
     text-align: center;
     color: @text-color-1;
-    margin: 100px auto;
+    margin: 0px auto;
 
 
     @media (max-width: 880px) {
-        margin: 50px auto;
+        height: ~"calc(50% - " @shortener-height ~")";
     }
 
 }

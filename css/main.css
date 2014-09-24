@@ -9,14 +9,15 @@ html {
 }
 .header {
   width: 60%;
+  height: calc(50% -  60px );
   max-width: 500px;
   text-align: center;
   color: #333333;
-  margin: 100px auto;
+  margin: 0px auto;
 }
 @media (max-width: 880px) {
   .header {
-    margin: 50px auto;
+    height: calc(50% -  120px );
   }
 }
 .shortener {
@@ -393,6 +394,7 @@ html {
   fill: #333333;
   max-height: 100%;
   max-width: 100%;
+  height: 100%;
 }
 .hero .plain {
   font-family: 'Oswald', sans-serif;
@@ -411,8 +413,12 @@ html {
   text-decoration: none;
   color: #333333;
 }
+html {
+  height: 100%;
+}
 body {
   width: 100%;
+  height: 100%;
   margin: 0 auto;
   font-family: 'Oswald', sans-serif;
 }
