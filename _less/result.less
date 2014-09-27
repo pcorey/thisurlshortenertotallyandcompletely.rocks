@@ -15,7 +15,8 @@
         }
     }
 
-    a:first-of-type {
+    span {
+        text-align: center;
         display: inline-block;
         width: ~"calc(100% - 234px)";
         height: @shortener-height - (@shortener-padding * 2);
@@ -29,8 +30,9 @@
 
         border-radius: 8px;
 
-        text-decoration: none;
-        text-align: center;
+        a {
+            text-decoration: none;
+        }
 
         @media (max-width: 880px) {
             width: 100%;
@@ -58,14 +60,16 @@
     }
 
     &.success {
-        a:first-of-type {
+        span {
             border: 4px dotted @border-color-3;
-            color: @text-color-1;
+            a {
+                color: @text-color-1;
+            }
         }
     }
 
     &.error {
-        a:first-of-type {
+        span {
             border: 4px dotted @border-color-5;
             color: @border-color-5;
         }

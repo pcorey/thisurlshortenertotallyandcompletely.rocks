@@ -334,7 +334,8 @@ html {
     width: 100%;
   }
 }
-.shortener .result a:first-of-type {
+.shortener .result span {
+  text-align: center;
   display: inline-block;
   width: calc(100% - 234px);
   height: 80px;
@@ -345,44 +346,47 @@ html {
   font-size: 30px;
   line-height: 72px;
   border-radius: 8px;
+}
+.shortener .result span a {
   text-decoration: none;
-  text-align: center;
 }
 @media (max-width: 880px) {
-  .shortener .result a:first-of-type {
+  .shortener .result span {
     width: 100%;
   }
 }
 @media (max-width: 640px) {
-  .shortener .result a:first-of-type {
+  .shortener .result span {
     font-size: 24px;
   }
 }
 @media (max-width: 540px) {
-  .shortener .result a:first-of-type {
+  .shortener .result span {
     font-size: 20px;
   }
 }
 @media (max-width: 470px) {
-  .shortener .result a:first-of-type {
+  .shortener .result span {
     font-size: 18px;
   }
 }
 @media (max-width: 430px) {
-  .shortener .result a:first-of-type {
+  .shortener .result span {
     font-size: 14px;
   }
 }
 @media (max-width: 355px) {
-  .shortener .result a:first-of-type {
+  .shortener .result span {
     font-size: 12px;
   }
 }
-.shortener .result.success a:first-of-type {
+.shortener .result.success span {
   border: 4px dotted #aaed7d;
+}
+.shortener .result.success span a {
   color: #333333;
 }
-.shortener .result.error a:first-of-type {
+.shortener .result.error span {
   border: 4px dotted #c22400;
   color: #c22400;
 }
