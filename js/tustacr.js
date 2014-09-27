@@ -1,7 +1,7 @@
 function TUSTACR(endpoint) {
     this.ref = new Firebase(endpoint);
 
-    this.ref.limit(1).on('value', function(record) {
+    this.ref.child('keyToUrl').limit(1).on('value', function(record) {
         if (record.val()) {
             this.key = parseInt(Object.keys(record.val())[0]);
         }
@@ -12,9 +12,19 @@ function TUSTACR(endpoint) {
 }
 
 TUSTACR.prototype.getURLFromKey = function(key, callback) {
-    this.ref.child(key).once('value', function(record) {
+    this.ref.child('keyToUrl').child(key).once('value', function(record) {
         callback(record.val());
     });
+};
+
+TUSTACR.prototype.makeKey = function(url) {
+    return url.replace(/[.$[\]\/\x00-\x1F\x7F]/g, '');
+};
+
+TUSTACR.prototype.addURLToKey = function(url, key) {
+    var o = {};
+    o[this.makeKey(url)] = key;
+    this.ref.child('urlToKey').update(o);
 };
 
 TUSTACR.prototype.addNewURL = function(url, successCallback, errorCallback) {
@@ -31,7 +41,8 @@ TUSTACR.prototype.addNewURL = function(url, successCallback, errorCallback) {
         }
         this.key++;
         if (completed) {
-            successCallback(this.urlKey, result.val());
+            this.addURLToKey(result.val(), this.urlKey);
+            successCallback(this.urlKey);
         }
         else {
             this.addNewURL(url, successCallback, errorCallback);
@@ -39,9 +50,16 @@ TUSTACR.prototype.addNewURL = function(url, successCallback, errorCallback) {
     };
 
     this.urlKey = this.key;
-    this.ref.child(this.key).transaction(transaction.bind(this), complete.bind(this));
+    this.ref.child('keyToUrl').child(this.key).transaction(transaction.bind(this), complete.bind(this));
 };
 
 TUSTACR.prototype.getKeyFromURL = function(url, successCallback, errorCallback) {
-    this.addNewURL(url, successCallback, errorCallback);
+    this.ref.child('urlToKey/'+this.makeKey(url)).once('value', function(record) {
+        if (record.val()) {
+            successCallback(record.val());
+        }
+        else {
+            this.addNewURL(url, successCallback, errorCallback);
+        }
+    }.bind(this));
 };

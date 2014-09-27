@@ -22,7 +22,7 @@ $(function() {
         return url;
     }
 
-    function handleSuccess(key, url) {
+    function handleSuccess(key) {
         var code = key.toString(32);
         backSpan.html('<a href="/?' + code + 
             '">thisurlshortenertotallyandcompletely.rocks/'+code+'</a>');
@@ -31,8 +31,14 @@ $(function() {
     }
 
     function submit() {
-        url = prependProtocol(input.val());
-        tustacr.getKeyFromURL(url, handleSuccess, showError);
+        if (input.val()) {
+            url = prependProtocol(input.val());
+            tustacr.getKeyFromURL(url, handleSuccess, showError);
+        }
+        else {
+            showError('Enter a URL you want to shorten!');
+        }
+        return false;
     }
 
     $('#shorten').click(submit);
@@ -45,6 +51,7 @@ $(function() {
     $('#again').click(function() {
         input.val('').focus();
         $('#box').removeClass('show-back');
+        return false;
     });
 
     if (request) {
