@@ -3,7 +3,7 @@ function TUSTACR(endpoint) {
 
     this.ref.child('keyToUrl').limit(1).on('value', function(record) {
         if (record.val()) {
-            this.key = parseInt(Object.keys(record.val())[0]);
+            this.key = parseInt(Object.keys(record.val())[0]) + 1;
         }
         else {
             this.key = 0;
@@ -39,7 +39,6 @@ TUSTACR.prototype.addNewURL = function(url, successCallback, errorCallback) {
             errorCallback('Whoops! Something went very wrong.');
             return;
         }
-        this.key++;
         if (completed) {
             this.addURLToKey(result.val(), this.urlKey);
             successCallback(this.urlKey);
@@ -50,12 +49,12 @@ TUSTACR.prototype.addNewURL = function(url, successCallback, errorCallback) {
     };
 
     this.urlKey = this.key;
-    this.ref.child('keyToUrl').child(this.key).transaction(transaction.bind(this), complete.bind(this));
+    this.ref.child('keyToUrl').child(this.urlKey).transaction(transaction.bind(this), complete.bind(this));
 };
 
 TUSTACR.prototype.getKeyFromURL = function(url, successCallback, errorCallback) {
     this.ref.child('urlToKey/'+this.makeKey(url)).once('value', function(record) {
-        if (record.val()) {
+        if (record.val() != null) {
             successCallback(record.val());
         }
         else {

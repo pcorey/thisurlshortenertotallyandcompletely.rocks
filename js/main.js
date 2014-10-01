@@ -25,7 +25,7 @@ $(function() {
     function handleSuccess(key) {
         var code = key.toString(32);
         backSpan.html('<a href="/?' + code + 
-            '">thisurlshortenertotallyandcompletely.rocks/'+code+'</a>');
+            '">thisurlshortenertotallyandcompletely.rocks?'+code+'</a>');
         back.removeClass('error');
         box.toggleClass('show-back');
     }
