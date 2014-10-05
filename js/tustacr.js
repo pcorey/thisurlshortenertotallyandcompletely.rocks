@@ -1,5 +1,6 @@
-function TUSTACR(endpoint) {
+function TUSTACR(endpoint, maxAttempts) {
     this.ref = new Firebase(endpoint);
+    this.maxAttempts = maxAttempts || 3;
 
     this.ref.child('keyToUrl').limit(1).on('value', function(record) {
         if (record.val()) {
@@ -9,7 +10,7 @@ function TUSTACR(endpoint) {
             this.key = 0;
         }
     }.bind(this));
-}
+};
 
 TUSTACR.prototype.getURLFromKey = function(key, callback) {
     this.ref.child('keyToUrl').child(key).once('value', function(record) {
@@ -27,7 +28,12 @@ TUSTACR.prototype.addURLToKey = function(url, key) {
     this.ref.child('urlToKey').update(o);
 };
 
-TUSTACR.prototype.addNewURL = function(url, successCallback, errorCallback) {
+TUSTACR.prototype.addNewURL = function(url, successCallback, errorCallback, attempt) {
+    if (attempt >= this.maxAttempts) {
+        errorCallback('Whoops! Something went very wrong.');
+        return;
+    }
+
     var transaction = function(record) {
         if (!record) {
             return url;
@@ -44,7 +50,7 @@ TUSTACR.prototype.addNewURL = function(url, successCallback, errorCallback) {
             successCallback(this.urlKey);
         }
         else {
-            this.addNewURL(url, successCallback, errorCallback);
+            this.addNewURL(url, successCallback, errorCallback, attempt ? attempt + 1 : 1);
         }
     };
 

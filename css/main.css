@@ -419,6 +419,13 @@ html {
   text-decoration: none;
   color: #333333;
 }
+body > footer {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  color: #aaaaaa;
+  max-width: calc(100% - 128px);
+}
 html {
   height: 100%;
 }
@@ -428,6 +435,11 @@ body {
   margin: 0 auto;
   font-family: 'Oswald', sans-serif;
 }
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Lobster', cursive;
 }
